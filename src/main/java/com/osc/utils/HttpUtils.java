@@ -1,11 +1,8 @@
 package com.osc.utils;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
-
 
 /**
  * @author WuChengguo
@@ -30,7 +27,7 @@ public class HttpUtils {
             conn.setRequestMethod("POST");
             conn.setDoOutput(true);
             conn.setDoInput(true);
-            conn.setConnectTimeout(3*1000);
+            conn.setConnectTimeout(2*1000);
             conn.setRequestProperty("X-Parse-Application-Id",applicationId);
             conn.setRequestProperty("Content-Type", "application/json; charset=UTF-8");
             try(OutputStream os = conn.getOutputStream()) {
@@ -38,8 +35,7 @@ public class HttpUtils {
                 os.write(input, 0, input.length);
                 os.flush();
             }
-            //获得响应状态
-            System.out.println("ResponseCode:"+conn.getResponseCode());
+            conn.connect();
         }catch (Exception e){
            //TODO
         }finally {

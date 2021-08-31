@@ -25,8 +25,6 @@ public class UserEventListenerProvider implements EventListenerProvider {
 
     @Override
     public void onEvent(AdminEvent adminEvent, boolean b) {
-         System.out.println("Admin Event Occurred:"+ toString(adminEvent));
-        System.out.println("========================");
         if (RESOURCE_TYPE.equals(adminEvent.getResourceTypeAsString())){
             System.out.println(toJSON(adminEvent));
             HttpUtils.postData(toJSON(adminEvent));
