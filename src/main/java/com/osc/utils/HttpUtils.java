@@ -36,6 +36,7 @@ public class HttpUtils {
                 os.flush();
             }
             conn.connect();
+            System.out.println(conn.getResponseCode()+"<<>>"+conn.getResponseMessage());
         }catch (Exception e){
            //TODO
         }finally {
